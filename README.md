@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Complix
+넷플릭스 클론 프로젝트
 
-## Available Scripts
+### 목표
+1. React.js를 활용하여 동적인 UI 개발
+2. React 클래스 컴포넌트 및 함수형 컴포넌트에 대한 이해
+3. React-Redux를 통한 상태 관리 연습
+4. React-Router를 통한 컴포넌트 <-> URL 맵핑
+5. styled-components 모듈을 이용한 컴포넌트 스타일링
+6. axios 모듈을 이용한 비동기 통신 및 후속 처리
 
-In the project directory, you can run:
+### 구현 기능 
+**Must**
+- 로그인 페이지 (로컬 스토리지의 token 값을 활용)
+- 메인 페이지 (신규 TV & 영화, 인기 TV & 영화 등 컨텐츠 정보 제공)
+  - 컨텐츠 선택시 해당 컨텐츠 상세 정보 표시
+- TV 프로그램 페이지 (메인 페이지의 컨텐츠 중 카테고리가 TV인 컨텐츠 정보 제공)
+  - 컨텐츠 선택시 해당 컨텐츠 상세 정보 표시
+- 영화 페이지 (메인 페이지의 컨텐츠 중 카테고리가 영화인 컨텐츠 정보 제공)
+  - 컨텐츠 선택시 해당 컨텐츠 상세 정보 표시
 
-### `npm start`
+### 구현 기능 (Optional)
+- 내가 찜한 컨텐츠 (실제 [the Movie DB](https://www.themoviedb.org/) 사이트의 회원정보에 해당 컨텐츠를 등록)
+- 컨텐츠 선택시 해당 컨텐츠를 내가 찜한 컨텐츠에 추가할 수 있는 버튼
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 사용 API
+[The Movie DB](https://developers.themoviedb.org/3) API를 사용하여 신규 TV & 영화, 인기 TV & 영화, 지금 뜨는 컨텐츠에 대한 정보 제공.
+- [신규 TV](https://developers.themoviedb.org/3/tv/get-tv-on-the-air)
+- [신규 영화](https://developers.themoviedb.org/3/movies/get-now-playing)
+- [지금 뜨는 컨텐츠](https://developers.themoviedb.org/3/trending/get-trending)
+- [인기 TV](https://developers.themoviedb.org/3/tv/get-popular-tv-shows)
+- [인기 영화](https://developers.themoviedb.org/3/movies/get-popular-movies)
+- [통합 검색](https://developers.themoviedb.org/3/search/multi-search)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### dependencies
+- react-router-dom
+- axios
+- styled-components
+- query-string
+- redux
+- react-redux
+- react-error-boundary
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### devDependencies
+- eslint-config-prettier
+- husky
+- lint-staged
+- prettier
