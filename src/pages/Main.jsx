@@ -1,19 +1,13 @@
-import React, {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useCallback,
-} from 'react';
-import axios from 'axios';
-import qs from 'query-string';
-import uuid from 'uuid';
-import ScrollItem from 'react-horizontal-scrolling-menu';
-import VisualArea from '../components/VisualArea';
-import MediaSection from '../components/MediaSection';
-import ItemDetail from '../components/ItemDetail';
-import Header from '../components/Header';
+import React, { useState, useLayoutEffect, useCallback } from "react";
+import axios from "axios";
+import uuid from "uuid";
+import ScrollItem from "react-horizontal-scrolling-menu";
+import VisualArea from "../components/VisualArea";
+import MediaSection from "../components/MediaSection";
+import ItemDetail from "../components/ItemDetail";
+import Header from "../components/Header";
 
-function Main(props) {
+function Main() {
   const [visual, setVisual] = useState({});
   const [newMovies, setNewMovies] = useState([]);
   const [newTv, setNewTv] = useState([]);
@@ -26,20 +20,20 @@ function Main(props) {
   const [selectedPopularTv, setSelectedPopularTv] = useState(null);
   const [selectedPopularMovie, setSelectedPopularMovie] = useState(null);
   const [searchList, setSearchList] = useState(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   useLayoutEffect(() => {
     const getNewMovieList = async () => {
       try {
         const { data } = await axios.get(
-          'https://api.themoviedb.org/3/movie/now_playing',
+          "https://api.themoviedb.org/3/movie/now_playing",
           {
             params: {
               api_key: process.env.REACT_APP_API_TOKEN,
-              language: 'en-US',
-              page: 1,
-            },
-          },
+              language: "en-US",
+              page: 1
+            }
+          }
         );
 
         setNewMovies(data.results);
@@ -51,14 +45,14 @@ function Main(props) {
     const getNewTvList = async () => {
       try {
         const { data } = await axios.get(
-          'https://api.themoviedb.org/3/tv/on_the_air',
+          "https://api.themoviedb.org/3/tv/on_the_air",
           {
             params: {
               api_key: process.env.REACT_APP_API_TOKEN,
-              language: 'en-US',
-              page: 1,
-            },
-          },
+              language: "en-US",
+              page: 1
+            }
+          }
         );
         setNewTv(data.results);
       } catch (err) {
@@ -69,12 +63,12 @@ function Main(props) {
     const getTrendingList = async () => {
       try {
         const { data } = await axios.get(
-          'https://api.themoviedb.org/3/trending/all/week',
+          "https://api.themoviedb.org/3/trending/all/week",
           {
             params: {
-              api_key: process.env.REACT_APP_API_TOKEN,
-            },
-          },
+              api_key: process.env.REACT_APP_API_TOKEN
+            }
+          }
         );
         setTrending(data.results);
       } catch (err) {
@@ -85,17 +79,16 @@ function Main(props) {
     const getPopularTvList = async () => {
       try {
         const { data } = await axios.get(
-          'https://api.themoviedb.org/3/tv/popular',
+          "https://api.themoviedb.org/3/tv/popular",
           {
             params: {
               api_key: process.env.REACT_APP_API_TOKEN,
-              language: 'en-US',
-              page: 1,
-            },
-          },
+              language: "en-US",
+              page: 1
+            }
+          }
         );
         setPopularTv(data.results);
-        console.log(data.results);
       } catch (err) {
         console.log(err);
       }
@@ -104,14 +97,14 @@ function Main(props) {
     const getPopularMovieList = async () => {
       try {
         const { data } = await axios.get(
-          'https://api.themoviedb.org/3/movie/popular',
+          "https://api.themoviedb.org/3/movie/popular",
           {
             params: {
               api_key: process.env.REACT_APP_API_TOKEN,
-              language: 'en-US',
-              page: 1,
-            },
-          },
+              language: "en-US",
+              page: 1
+            }
+          }
         );
         setPopularMovie(data.results);
       } catch (err) {
@@ -133,7 +126,7 @@ function Main(props) {
 
   const MediaItem = ({ posterUrl, id, category }) => {
     const onSelect = useCallback(() => {
-      if (category === 'newMovies') {
+      if (category === "newMovies") {
         const [_selectedMovie] = newMovies.filter(movie => movie.id === id);
         setSelectedTv(null);
         setSelectedTrending(null);
@@ -142,7 +135,7 @@ function Main(props) {
         setSelectedMovie(_selectedMovie);
       }
 
-      if (category === 'newTv') {
+      if (category === "newTv") {
         const [_selectedTv] = newTv.filter(tv => tv.id === id);
         setSelectedMovie(null);
         setSelectedTrending(null);
@@ -151,9 +144,9 @@ function Main(props) {
         setSelectedTv(_selectedTv);
       }
 
-      if (category === 'trending') {
+      if (category === "trending") {
         const [_selectedTrending] = trending.filter(
-          trending => trending.id === id,
+          trending => trending.id === id
         );
         setSelectedMovie(null);
         setSelectedTv(null);
@@ -162,7 +155,7 @@ function Main(props) {
         setSelectedTrending(_selectedTrending);
       }
 
-      if (category === 'popularTv') {
+      if (category === "popularTv") {
         const [_selectedPopularTv] = popularTv.filter(tv => tv.id === id);
         setSelectedMovie(null);
         setSelectedTv(null);
@@ -171,9 +164,9 @@ function Main(props) {
         setSelectedPopularTv(_selectedPopularTv);
       }
 
-      if (category === 'popularMovie') {
+      if (category === "popularMovie") {
         const [_selectedPopularMovie] = popularMovie.filter(
-          movie => movie.id === id,
+          movie => movie.id === id
         );
         setSelectedMovie(null);
         setSelectedTv(null);
@@ -199,8 +192,6 @@ function Main(props) {
   };
 
   const getSearchList = (list, query) => {
-    // console.log('in main', list);
-    console.log(query);
     setQuery(query);
     setSearchList(list);
   };
@@ -217,7 +208,7 @@ function Main(props) {
                   src={
                     item.poster_path
                       ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
-                      : '/noimage.gif'
+                      : "/noimage.gif"
                   }
                   alt="poster"
                 />
@@ -354,7 +345,7 @@ function Main(props) {
                       id={tv.id}
                       title={tv.title}
                       posterUrl={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
-                      category={'popularTv'}
+                      category={"popularTv"}
                     />
                   ))}
                   alignCenter={false}
@@ -390,7 +381,7 @@ function Main(props) {
                       id={movie.id}
                       title={movie.title}
                       posterUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                      category={'popularMovie'}
+                      category={"popularMovie"}
                     />
                   ))}
                   alignCenter={false}

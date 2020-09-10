@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import media from '../libs/MediaQuery';
-import Button from '../components/Button';
-import { debounce } from 'lodash';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import media from "../libs/MediaQuery";
+import Button from "../components/Button";
+import { debounce } from "lodash";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function Header(props) {
-  // const [data, setData] = useState(null);
   const history = useHistory();
 
   const Logo = styled.h1`
@@ -67,26 +66,18 @@ function Header(props) {
     }
   `;
 
-  // const handleOnChange = ({ target }) => {
-  //   console.log(target.value);
-  //   setValue(target.value);
-  // };
-
   const handleOnChange = debounce(async query => {
     if (!query) return;
     try {
-      // https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
       const { data } = await axios.get(
-        'https://api.themoviedb.org/3/search/multi',
+        "https://api.themoviedb.org/3/search/multi",
         {
           params: {
             api_key: process.env.REACT_APP_API_TOKEN,
-            query,
-          },
-        },
+            query
+          }
+        }
       );
-      console.log(data.results);
-      // setData(data.results);
       props.onSearch(data.results, query);
     } catch (err) {
       console.log(err);
@@ -121,8 +112,8 @@ function Header(props) {
           size="small"
           color="red"
           onClick={() => {
-            localStorage.removeItem('token');
-            history.push('/signin');
+            localStorage.removeItem("token");
+            history.push("/signin");
           }}
         >
           Log out
