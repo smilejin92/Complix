@@ -9,10 +9,9 @@ pw: 1234
 ### 목표
 1. React.js를 활용하여 동적인 UI 개발
 2. React 클래스 컴포넌트 및 함수형 컴포넌트에 대한 이해
-3. React-Redux를 통한 상태 관리 연습
-4. React-Router를 통한 컴포넌트 <-> URL 맵핑
-5. styled-components 모듈을 이용한 컴포넌트 스타일링
-6. axios 모듈을 이용한 비동기 통신 및 후속 처리
+3. React-Router를 통한 컴포넌트 <-> URL 맵핑
+4. styled-components 모듈을 이용한 컴포넌트 스타일링
+5. axios 모듈을 이용한 비동기 통신 및 후속 처리
 
 ### 구현 기능 (Must)
 - 로그인 페이지 (로컬 스토리지의 token 값을 활용)
