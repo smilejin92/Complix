@@ -50,10 +50,13 @@ const SigninForm = () => {
     const password = passwordRef.current.value;
 
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
-        email,
-        password
-      });
+      const response = await axios.post(
+        "http://ec2-52-79-220-237.ap-northeast-2.compute.amazonaws.com:5000/auth/login",
+        {
+          email,
+          password
+        }
+      );
 
       const { access_token } = response.data;
 
