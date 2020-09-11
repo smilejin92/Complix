@@ -1,5 +1,10 @@
 # Complix
-넷플릭스 클론 프로젝트
+넷플릭스 클론 프로젝트!
+
+[링크](http://ec2-52-79-220-237.ap-northeast-2.compute.amazonaws.com/signin)로 접속 후 아래 dummy 계정으로 로그인 해보세요!
+
+email: admin@complix.com<br/>
+pw: 1234
 
 ### 목표
 1. React.js를 활용하여 동적인 UI 개발
